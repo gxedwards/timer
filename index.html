@@ -18,12 +18,16 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/gxe.css">
+    <!--<script src="cordova.js"></script>-->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+    <script src="js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="js/vendor/knockout-2.3.0.js"></script>
+
 
 </head>
-<body>
+<body class="main">
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
@@ -32,29 +36,28 @@
 
 
 
-<div class="border">
+<div class="centereddiv">
     <h2>Tabata Timer</h2>
     <div><span id="currentInterval" data-bind="text:rep()"></span> of <span id="intervals"
                                                                             data-bind="text: cfg.reps"></span></div>
 
     <div>
-        <button id="display" class="button bigrounded"
+        <button id="display" class="btn btn-success btn-lg btn-block"
                 data-bind="click: doAction, text: clock, css: actionColor"></button>
     </div>
 
     <div>
         <br>
-        <button data-bind='click: start, visible: isRunning() == false' class="button green">Start</button>
-        <button data-bind='click: pause, visible: isPaused() == false && isRunning' class="button red">Pause</button>
-        <button data-bind='click: resume, visible: isPaused' class="button green">Resume</button>
+        <button data-bind='click: start, visible: isRunning() == false' class="btn btn-success btn-lg btn-block">Start</button>
+        <button data-bind='click: pause, visible: isPaused() == false && isRunning' class="btn btn-danger btn-lg btn-block">Pause</button>
+        <button data-bind='click: resume, visible: isPaused' class="btn btn-success btn-lg btn-block">Resume</button>
     </div>
     <div>
         <br>
-        <button data-bind='click: reset, visible: isRunning' class="button blue">Reset</button>
+        <button data-bind='click: reset, visible: isRunning' class="btn btn-primary btn-lg btn-block">Reset</button>
     </div>
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
