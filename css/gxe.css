@@ -245,10 +245,22 @@
 }
 
 /* border for the entire control */
-.border {
-    text-align: center;
-    width: 200px;
-    background-color:#dcdcdc;
+
+.main {
+    background-color: #cfe2ef;
+    vertical-align: middle;
+}
+/* create a centered div */
+.centereddiv {
     padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #cfe2ef;
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
 }
 

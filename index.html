@@ -24,6 +24,7 @@
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="js/vendor/jquery-1.9.1.min.js"></script>
     <script src="js/vendor/knockout-2.3.0.js"></script>
+    <script src="js/jBeep.js" type="text/javascript"></script>
 
 
 </head>
@@ -37,6 +38,7 @@
 
 
 <div class="centereddiv">
+    <button onClick="javascript:jBeep('jBeep.wav');">Play jBeep!</button>
     <h2>Tabata Timer</h2>
     <div><span id="currentInterval" data-bind="text:rep()"></span> of <span id="intervals"
                                                                             data-bind="text: cfg.reps"></span></div>
