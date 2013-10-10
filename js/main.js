@@ -1,5 +1,13 @@
 $(function () {
 
+    // beep if present
+    function playBeep() {
+        if (navigator){
+            console.log("beep");
+            navigator.notification.beep(1);
+        }
+    }
+
     /**
      * Countdown timer. Start, pause, reset
      */
@@ -51,17 +59,17 @@ $(function () {
             console.log("Start");
 
 
-                console.log ("initializing intervals");
-                // create an array of all the periods that we are working with. A warmup then n work
-                self.intervalStates.push( {"name": "Warmup", "start": self.cfg.warmup, "rep": 0, "actionColor" : "orange"});
-                for (var i=0; i < self.cfg.reps; i++){
-                    var rep = i +1;
-                    self.intervalStates.push({"name": "Work", "start": self.cfg.work, "rep": rep, "actionColor": "green"});
-                    self.intervalStates.push({"name": "Rest", "start": self.cfg.rest, "rep": rep, "actionColor": "red"});
-                };
-                self.currentInterval(0);
+            console.log ("initializing intervals");
+            // create an array of all the periods that we are working with. A warmup then n work
+            self.intervalStates.push( {"name": "Warmup", "start": self.cfg.warmup, "rep": 0, "actionColor" : "orange"});
+            for (var i=0; i < self.cfg.reps; i++){
+                var rep = i +1;
+                self.intervalStates.push({"name": "Work", "start": self.cfg.work, "rep": rep, "actionColor": "green"});
+                self.intervalStates.push({"name": "Rest", "start": self.cfg.rest, "rep": rep, "actionColor": "red"});
+            };
+            self.currentInterval(0);
 
-                self.clock (self.intervalStates[0].name + ":" +self.intervalStates[0].start);
+            self.clock (self.intervalStates[0].name + ":" +self.intervalStates[0].start);
 
 
             self.isRunning(true);
@@ -114,13 +122,19 @@ $(function () {
         };
 
         self.run = function () {
-            console.log("Doing run");
+            console.log("Doing tick");
 
-            // reduce the current interval
+            // reduce the current interval time
             self.intervalStates[self.currentInterval()].start--;
 
+            var val = self.intervalStates[self.currentInterval()].start;
 
-            if (self.intervalStates[self.currentInterval()].start == 0){
+            if (val > 0 && val <= 3){
+                playBeep();
+            }
+
+            if (val == 0){
+
                 var newCurrentInterval = self.currentInterval() + 1;
                 self.currentInterval(newCurrentInterval);
             }
@@ -132,7 +146,7 @@ $(function () {
                 self.actionColor(currentIntervalState.actionColor);
             } else {
 
-                 console.log("clearing interval");
+                console.log("clearing interval");
                 window.clearTimeout(self.interval());
                 self.clock(self.cfg.completeValue);
             }
